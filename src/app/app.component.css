@@ -1,0 +1,30 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 3rem;
+    
+}
+.button {
+    
+    margin-top: 30;
+    width: 60px;
+    height: 30px;
+    background-color: royalblue;
+}
+:root{
+
+    --primary-color: #dc3545;
+    --dark-color:#333333; 
+
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Roboto',sans-serif;
+    font-size: 1rem;
+    background: cornsilk;
+    color: lightslategray;
+}
