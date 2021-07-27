@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { FirebaseService } from '../srvices/firebase.service';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatOption } from '@angular/material/core';
+import { MatOptionModule } from '@angular/material/core';
+import { IPayments } from '../srvices/firebase.service';
 
 @Component({
   selector: 'app-input-field',
@@ -7,9 +13,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputFieldComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private store: AngularFirestore
+  ) { }
 
   ngOnInit(): void {
+
+
+  }
+
+  addPayment(payload: IPayments) {
+    return this.store.collection('payments').add(payload)
   }
 
 }
