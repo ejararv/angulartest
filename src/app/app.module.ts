@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { PaymentslistComponent } from './paymentslist/paymentslist.component';
+import { CreatePaymentComponent } from './create-payment/create-payment.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { PaymentslistComponent } from './paymentslist/paymentslist.component';
     SearchBarComponent,
     DataListComponent,
     NavbarComponent,
-    PaymentslistComponent
+    PaymentslistComponent,
+    CreatePaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,7 @@ import { PaymentslistComponent } from './paymentslist/paymentslist.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+    ReactiveFormsModule,
     MatListModule,
     MatFormFieldModule,
     MatSelectModule

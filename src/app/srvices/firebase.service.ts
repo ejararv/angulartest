@@ -6,7 +6,7 @@ import { AngularFirestore} from '@angular/fire/firestore'
 })
 export class FirebaseService {
  
-
+  payments:IPayments[] = []
   constructor(
     private firestore: AngularFirestore
   ) { }
