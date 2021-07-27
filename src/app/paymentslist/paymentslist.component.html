@@ -1,13 +1,16 @@
 
 <div class="example-container">
 
-<button (click)="addPayment()">ADD</button>
-
+<nav>
+    <a routerLink="/create">create</a>
+    
+</nav>
 <div *ngFor="let item of payments">
     <table>
         <td>{{ item.netto }}</td>
         <th>{{ item.vat }}</th>
         <th>{{ item.netto }}</th>
+        <a routerLink="/detail">Details</a>
     </table>
  
   <!-- <button (click)="updatePayment(item)"> Update</button>

@@ -1,15 +1,23 @@
-<div class="container">
-   
-    <div >
-        <div>
-            
-        </div>
-        <div >
-          
+<header class="header">
+    <div class="container">
+        <div class="header_iner">
+            <div class="header_logo">
+                MyPay
+            </div>
+            <nav class="navbar">
+                <a routerLink="/">About</a>
+                <a routerLink="/create">Create</a>
+                <a routerLink="/payments">Payments</a>
+            </nav>
         </div>
     </div>
-    <div>
-      <app-paymentslist></app-paymentslist>
-    </div>
+</header>
 
+
+<div class="container">
+
+  
+ <app-home-page></app-home-page>
 </div>
+
+<router-outlet></router-outlet>
