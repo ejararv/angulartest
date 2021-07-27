@@ -13,11 +13,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {InputFieldComponent} from './input-field/input-field.component'
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DataListComponent } from './data-list/data-list.component';
+
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { NavbarComponent } from './navbar/navbar.component';
+
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -37,8 +37,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     InputFieldComponent,
     SearchBarComponent,
-    DataListComponent,
-    NavbarComponent,
+   
     PaymentslistComponent,
     CreatePaymentComponent,
     DetailPageComponent,
