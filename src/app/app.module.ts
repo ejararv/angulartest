@@ -30,6 +30,8 @@ import { CreatePaymentComponent } from './create-payment/create-payment.componen
 import { DetailPageComponent } from './detail-page/detail-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatTableDataSource} from '@angular/material/table';
+
 
 
 @NgModule({
@@ -54,6 +56,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatPaginatorModule,
     MatSortModule,
     LayoutModule,
+    
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,

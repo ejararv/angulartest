@@ -1,28 +1,40 @@
-<div class="example-container">
-    <mat-form-field appearance="fill">
-      <mat-label>Input</mat-label>
-      <input matInput type="number" [(ngModel)]="netto" placeholder="netto" />
-      <input matInput type="text" [(ngModel)]="position" placeholder="position" />
-      <input matInput type="text" [(ngModel)]="contractor" placeholder="contractor" />
-      <input matInput type="text" [(ngModel)]="description" placeholder="description" />
+<div class="container_input">
+    <div class="form_group">
+       
+            <input   type="number" [(ngModel)]="netto" placeholder="netto" />
+        
+        <div class="form_field">
+            <input  type="text" [(ngModel)]="position" placeholder="position" />
+        </div>
+        <div class="form_field">
+            <input  type="text" [(ngModel)]="contractor" placeholder="contractor" />
+        </div>
+        <div class="form_field">
+            <input  type="text" [(ngModel)]="description" placeholder="description" />
     
-    <!--   
-    </mat-form-field>
+        </div>
+     
+      
+    </div>
+ 
+      
     
-        <mat-form-field appearance="fill" >
+    
+        <mat-form-field  >
             <mat-label>SELECT</mat-label>
                 <mat-select [(ngModel)]="vat" >
-                    <mat-option value="one">23</mat-option>
-                    <mat-option value="two">7</mat-option>
+                    <mat-option value="23">23</mat-option>
+                    <mat-option value="7">7</mat-option>
                 </mat-select>
         </mat-form-field>
-    </div>
-        -->
+
+       
       
       
     
     
     <button (click)="addPayment()">ADD</button>
-    
-    
+
+</div>
+      
     

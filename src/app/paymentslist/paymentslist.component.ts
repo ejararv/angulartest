@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { FirebaseService } from '../srvices/firebase.service';
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface IPayments {
   id : number
@@ -26,7 +27,13 @@ export interface IPayments {
 
 export class PaymentslistComponent implements OnInit {
 
+  
+  
+
   payments:any = []
+
+  dataSource = new MatTableDataSource(this.payments);
+  displayedColumns = ['id', 'position', 'contractor', 'vat', 'netto'];
   vat:number = 0
   netto:number =0
   position: string =''
@@ -44,6 +51,7 @@ export class PaymentslistComponent implements OnInit {
         let item:any = items.payload.doc.data()
         item.id = items.payload.doc.id
         this.payments.push(item)
+        
       })
     })
     // this.storeService
@@ -79,8 +87,12 @@ export class PaymentslistComponent implements OnInit {
   //   });
   // }
 
-  // deletePayment(item: any) {
-  //   this.store.doc(`payments/${item.id}`).delete();
-  // }
+  deletePayment(item: any) {
+    this.storeService.deletePayment(item.id)
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
 }
