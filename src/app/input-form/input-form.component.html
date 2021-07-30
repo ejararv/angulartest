@@ -1,0 +1,95 @@
+<form [formGroup]="paymentsForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Shipping Information</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Contractor" formControlName="contractor" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              placeholder="Contractor Name"
+              formControlName="contractor"
+            />
+            <mat-error
+              *ngIf="paymentsForm.controls['contractor'].hasError('required')"
+            >
+            Contractor Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+       
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea
+              matInput
+              placeholder="Netto"
+              formControlName="netto"
+            ></textarea>
+            <mat-error
+              *ngIf="paymentsForm.controls['netto'].hasError('required')"
+            >
+              Netto <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      
+      <div class="row" >
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea
+              matInput
+              placeholder="Descriptions"
+              formControlName="description"
+            ></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Position" formControlName="position" />
+            <mat-error
+              *ngIf="paymentsForm.controls['position'].hasError('required')"
+            >
+            Position is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Vat" formControlName="vat">
+              <mat-option
+                *ngFor="let vat of vatOptions"
+                [value]="vat.option"
+              >
+                {{ vat.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="paymentsForm.controls['vat'].hasError('required')"
+            >
+              State is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      
+     
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

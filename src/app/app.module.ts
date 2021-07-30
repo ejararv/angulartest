@@ -5,12 +5,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import {AngularFireModule} from '@angular/fire';
-import {AngularFireDatabaseModule} from '@angular/fire/database'
-import {environment} from './../environments/environment'
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from './../environments/environment';
 
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {InputFieldComponent} from './input-field/input-field.component'
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -30,20 +29,23 @@ import { CreatePaymentComponent } from './create-payment/create-payment.componen
 import { DetailPageComponent } from './detail-page/detail-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {MatTableDataSource} from '@angular/material/table';
-
-
+import { MatTableDataSource } from '@angular/material/table';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { InputFormComponent } from './input-form/input-form.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InputFieldComponent,
-    SearchBarComponent,
    
+    SearchBarComponent,
     PaymentslistComponent,
     CreatePaymentComponent,
     DetailPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    InputFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,9 +56,10 @@ import {MatTableDataSource} from '@angular/material/table';
     BrowserAnimationsModule,
     MatTableModule,
     MatPaginatorModule,
+    Ng2SmartTableModule,
+
     MatSortModule,
     LayoutModule,
-    
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -65,9 +68,12 @@ import {MatTableDataSource} from '@angular/material/table';
     MatListModule,
     MatFormFieldModule,
     MatSelectModule,
-    NgbModule
+    NgbModule,
+    MatInputModule,
+    MatRadioModule,
+    MatCardModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

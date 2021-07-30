@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreatePaymentComponent } from './create-payment/create-payment.component';
 import { DetailPageComponent } from './detail-page/detail-page.component';
+
 import { PaymentslistComponent } from './paymentslist/paymentslist.component';
 
 const routes: Routes = [
@@ -11,13 +12,12 @@ const routes: Routes = [
   },
   {
     path: 'payments',
-    component: PaymentslistComponent
+    component: PaymentslistComponent,
   },
   {
     path: 'detail',
-    component: DetailPageComponent
-  }
-
+    component: DetailPageComponent,
+  },
 ];
 
 @NgModule({
@@ -25,5 +25,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-
-
