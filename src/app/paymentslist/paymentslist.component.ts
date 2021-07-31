@@ -23,6 +23,16 @@ export interface IPayments {
   description?: string;
 }
 
+const DATA_SET_example :IPayments [] = [
+ { id: Date.now(),
+  netto: 2000,
+  vat: 24,
+  position: "DATA TEST",
+  contractor: "Coment",
+  description: "Desc"}
+]
+
+
 @Component({
   selector: 'app-paymentslist',
   templateUrl: './paymentslist.component.html',
@@ -38,28 +48,17 @@ export interface IPayments {
     ]),
   ],
 })
-export class PaymentslistComponent implements OnInit {
-  settings = {
-    columns: {
-      position: {
-        title: 'Position',
-      },
-      contractor: {
-        title: 'Contractor',
-      },
-      vat: {
-        title: 'VAT',
-      },
-      netto: {
-        title: 'Netto',
-      },
-    },
-  };
 
-  data: any = [];
+
+
+export class PaymentslistComponent implements OnInit {
+ 
+
+  
 
   payments: any = [];
-  dataSource: any = [];
+  DATA_SET: any = []
+  data =   this.payments;
 
   displayedColumns = ['description', 'position', 'contractor', 'vat', 'netto'];
   vat: number = 0;
@@ -68,30 +67,36 @@ export class PaymentslistComponent implements OnInit {
   contractor: string = '';
   description: string = '';
 
-  constructor(private storeService: FirebaseService) {}
+  
 
-  ngOnInit() {
-    this.storeService.getPayments().subscribe((firebaseItems) => {
+  dataSource = new MatTableDataSource<IPayments>(this.payments && DATA_SET_example)
+
+  constructor( private storeService: FirebaseService ) {}
+
+  
+  getData () {
+    
+    let data = this.storeService.getPayments().subscribe((firebaseItems) => {
       this.payments = [];
-
+      
       firebaseItems.forEach((items) => {
         let item: any = items.payload.doc.data();
         item.id = items.payload.doc.id;
         this.payments.push(item);
+        this.dataSource = new MatTableDataSource(this.payments)
+        this.dataSource.data = this.payments
+        
       });
     });
+  }
 
-    // this.storeService
-    //   .collection('payments')
-    //   .snapshotChanges()
-    //   .subscribe((fireBaseItems) => {
-    //     this.payments = [];
-    //     fireBaseItems.forEach((items) => {
-    //       let item:any = items.payload.doc.data();
-    //       item.id = items.payload.doc.id;
-    //       this.payments.push(item);
-    //     });
-    //   });
+  ngOnInit() {
+   
+    this.getData()
+
+  
+    console.log(this.DATA_SET)
+    
   }
 
   addPayment() {
