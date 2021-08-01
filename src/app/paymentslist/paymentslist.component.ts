@@ -60,16 +60,18 @@ export class PaymentslistComponent implements OnInit {
   DATA_SET: any = []
   data =   this.payments;
 
-  displayedColumns = ['description', 'position', 'contractor', 'vat', 'netto'];
+  displayedColumns = [ 'position', 'contractor', 'vat', 'netto'];
   vat: number = 0;
   netto: number = 0;
   position: string = '';
   contractor: string = '';
   description: string = '';
+  expandedElement!: IPayments | null;
 
   
 
   dataSource = new MatTableDataSource<IPayments>(this.payments && DATA_SET_example)
+  
 
   constructor( private storeService: FirebaseService ) {}
 

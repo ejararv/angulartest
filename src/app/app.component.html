@@ -1,27 +1,28 @@
 
 
-
-<header class="header">
-    <div class="">
-        <div class="header_iner">
-            <div class="header_logo"> MyPay</div> 
-            <nav class="navbar">
-                <a class="nav_link" routerLink="/">About</a>
-                <a class="nav_link" routerLink="/create">Create</a>
-                <a class="nav_link" routerLink="/payments">Payments</a>
-            </nav>
+<div class="container">
+    <header class="header">
+        <div class="">
+            <div class="header_iner">
+                <div class="header_logo"> MyPay</div> 
+                <nav class="navbar">
+                    <a class="nav_link" routerLink="/">About</a>
+                    <a class="nav_link" routerLink="/create">Create</a>
+                    <a class="nav_link" routerLink="/payments">Payments</a>
+                </nav>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
+</div>
+
 
 
 
 <div class="container">
-    <app-home-page>
-       
-    </app-home-page>  
+    <app-create-payment></app-create-payment>
+    <router-outlet></router-outlet>
+
 </div>
-<router-outlet></router-outlet>
 
 
     
