@@ -25,7 +25,7 @@ export class FirebaseService {
 }
 
 export interface IPayments {
-  id: number;
+  date: number;
   netto: number;
   vat: number;
   position: string;

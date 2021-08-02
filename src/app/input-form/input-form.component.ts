@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { IPayments } from '../paymentslist/paymentslist.component';
-import { FirebaseService } from '../srvices/firebase.service';
+
+import { FirebaseService, IPayments } from '../srvices/firebase.service';
 
 @Component({
   selector: 'app-input-form',
@@ -16,18 +16,14 @@ export class InputFormComponent {
   contractor: string = '';
   description: string = '';
 
-  paymentsForm = this.fb.group(
-    {
-      id: Date.now(),
-      netto: this.netto,
-      vat: this.vat,
-      position: this.position,
-      contractor: this.contractor,
-      description: this.description,
-    }
-
-   
-  );
+  paymentsForm = this.fb.group({
+    id: Date.now(),
+    netto: [this.netto, [Validators.required]],
+    vat: this.vat,
+    position: this.position,
+    contractor: this.contractor,
+    description: this.description,
+  });
 
   vatOptions = [
     { name: '23', option: 23 },
@@ -36,20 +32,11 @@ export class InputFormComponent {
 
   constructor(private fb: FormBuilder, private storeService: FirebaseService) {}
 
-  addPayment() {
-    const payment: IPayments = {
-      id: Date.now(),
-      netto: this.netto,
-      vat: this.vat,
-      position: this.position,
-      contractor: this.contractor,
-      description: this.description,
-    };
-  }
+  
 
   onSubmit(): void {
     const payment: IPayments = this.paymentsForm.getRawValue();
-
+    payment.date = Date.now()
     this.storeService.addPayment(payment);
     alert('Thanks!');
   }

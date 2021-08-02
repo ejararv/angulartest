@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IPayments } from '../paymentslist/paymentslist.component';
-import { FirebaseService } from '../srvices/firebase.service';
+
+import { FirebaseService,IPayments } from '../srvices/firebase.service';
 import { InputFormComponent } from '../input-form/input-form.component';
 
 @Component({
@@ -21,7 +21,7 @@ export class CreatePaymentComponent implements OnInit {
   ngOnInit(): void {}
   addPayment() {
     const payment: IPayments = {
-      id: Date.now(),
+      date: Date.now(),
       netto: this.netto,
       vat: this.vat,
       position: this.position,

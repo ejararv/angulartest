@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { FirebaseService } from '../srvices/firebase.service';
+import { FirebaseService, IPayments } from '../srvices/firebase.service';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableDataSource } from '@angular/material/table';
@@ -14,24 +14,16 @@ import {
   trigger,
 } from '@angular/animations';
 
-export interface IPayments {
-  id: number;
-  netto: number;
-  vat: number;
-  position: string;
-  contractor: string;
-  description?: string;
-}
-
-const DATA_SET_example :IPayments [] = [
- { id: Date.now(),
-  netto: 2000,
-  vat: 24,
-  position: "DATA TEST",
-  contractor: "Coment",
-  description: "Desc"}
-]
-
+const DATA_SET_example: IPayments[] = [
+  {
+    date: Date.now(),
+    netto: 2000,
+    vat: 24,
+    position: 'DATA TEST',
+    contractor: 'Coment',
+    description: 'Desc',
+  },
+];
 
 @Component({
   selector: 'app-paymentslist',
@@ -48,19 +40,12 @@ const DATA_SET_example :IPayments [] = [
     ]),
   ],
 })
-
-
-
 export class PaymentslistComponent implements OnInit {
- 
-
-  
-
   payments: any = [];
-  DATA_SET: any = []
-  data =   this.payments;
+  DATA_SET: any = [];
+  data = this.payments;
 
-  displayedColumns = [ 'position', 'contractor', 'vat', 'netto'];
+  displayedColumns = ['id', 'position', 'contractor', 'vat', 'netto'];
   vat: number = 0;
   netto: number = 0;
   position: string = '';
@@ -68,42 +53,34 @@ export class PaymentslistComponent implements OnInit {
   description: string = '';
   expandedElement!: IPayments | null;
 
-  
+  dataSource = new MatTableDataSource<IPayments>(
+    this.payments && DATA_SET_example
+  );
 
-  dataSource = new MatTableDataSource<IPayments>(this.payments && DATA_SET_example)
-  
+  constructor(private storeService: FirebaseService) {}
 
-  constructor( private storeService: FirebaseService ) {}
-
-  
-  getData () {
-    
+  getData() {
     let data = this.storeService.getPayments().subscribe((firebaseItems) => {
       this.payments = [];
-      
+
       firebaseItems.forEach((items) => {
         let item: any = items.payload.doc.data();
         item.id = items.payload.doc.id;
         this.payments.push(item);
-        this.dataSource = new MatTableDataSource(this.payments)
-        this.dataSource.data = this.payments
-        
+        this.dataSource = new MatTableDataSource(this.payments);
+        this.dataSource.data = this.payments;
       });
     });
   }
 
   ngOnInit() {
-   
-    this.getData()
-
-  
-    console.log(this.DATA_SET)
+    this.getData();
     
   }
 
   addPayment() {
     const payment: IPayments = {
-      id: Date.now(),
+      date: Date.now(),
       netto: this.netto,
       vat: this.vat,
       position: this.position,
@@ -116,7 +93,7 @@ export class PaymentslistComponent implements OnInit {
 
   updatePayment(item: any) {
     const payment: IPayments = {
-      id: Date.now(),
+      date: Date.now(),
       netto: this.netto,
       vat: this.vat,
       position: this.position,
@@ -125,7 +102,7 @@ export class PaymentslistComponent implements OnInit {
     };
 
     this.storeService.updatePayment(item.id, {
-      id: Date.now(),
+      date: Date.now(),
       netto: this.netto,
       vat: this.vat,
       position: this.position,
