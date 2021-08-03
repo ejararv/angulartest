@@ -26,8 +26,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { PaymentslistComponent } from './paymentslist/paymentslist.component';
 import { CreatePaymentComponent } from './create-payment/create-payment.component';
-import { DetailPageComponent } from './detail-page/detail-page.component';
-import { HomePageComponent } from './home-page/home-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatTableDataSource } from '@angular/material/table';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
@@ -43,8 +41,8 @@ import { MatCardModule } from '@angular/material/card';
     SearchBarComponent,
     PaymentslistComponent,
     CreatePaymentComponent,
-    DetailPageComponent,
-    HomePageComponent,
+   
+    
     InputFormComponent,
   ],
   imports: [

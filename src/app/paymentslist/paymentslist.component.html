@@ -1,25 +1,8 @@
-<!-- <ng2-smart-table [settings]="settings" [source]="data"  ></ng2-smart-table> -->
-
-<!-- <div *ngFor="let item of payments">
-    <table>
-        <td>{{ item.netto }}</td>
-        <th>{{ item.vat }}</th>
-        <th>{{ item.netto }}</th>
-        <th>{{ item.contractor }}</th>
-        <th>{{ item.description }}</th>
-        <button (click)="deletePayment(item)"> delete</button>
-        <a routerLink="/detail">Details</a>
-    </table>
-</div> -->
-<div class="container">
-  <mat-form-field appearance="standard">
+<div class="container"  >
+  <mat-form-field appearance="outline">
     <mat-label>Filter</mat-label>
-    <input
-      matInput
-      (keyup)="applyFilter($event)"
-      placeholder="Ex. ium"
-      #input
-    />
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input />
+    <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
 
   <table
@@ -28,7 +11,7 @@
     multiTemplateDataRows
     class="mat-elevation-z8"
   >
-    <ng-container matColumnDef="id">
+    <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef>Date</th>
       <td mat-cell *matCellDef="let item">{{ item.date | date }}</td>
     </ng-container>
@@ -42,24 +25,34 @@
       <th mat-header-cell *matHeaderCellDef>Netto</th>
       <td mat-cell *matCellDef="let item">{{ item.netto }}</td>
     </ng-container>
-    <!-- Name Column -->
+
     <ng-container matColumnDef="contractor">
       <th mat-header-cell *matHeaderCellDef>Contractor</th>
       <td mat-cell *matCellDef="let item">{{ item.contractor }}</td>
     </ng-container>
 
-    <!-- Weight Column -->
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef>Position</th>
       <td mat-cell *matCellDef="let item">{{ item.position }}</td>
     </ng-container>
 
-    <!-- Symbol Column -->
-    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-
     <ng-container matColumnDef="description">
       <th mat-header-cell *matHeaderCellDef>Descriptions</th>
       <td mat-cell *matCellDef="let item">{{ item.description }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef></th>
+
+      <td *matCellDef="let item" (click)="editClick()">
+        <mat-icon matSuffix>edit</mat-icon>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td *matCellDef="let item" (click)="deletePayment(item)">
+        <mat-icon matSuffix>delete</mat-icon>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -72,45 +65,3 @@
     </tr>
   </table>
 </div>
-
-<div class="container">
-  <h2>Payments</h2>
-  <ul class="responsive-table">
-    <li class="table-header">
-      <div class="col col-1">position name</div>
-      <div class="col col-2">NETTO</div>
-      <div class="col col-3">VAT</div>
-      <div class="col col-4">Payment Status</div>
-      <div class="col col-4"></div>
-    </li>
-    <div *ngFor="let item of payments">
-      <li class="table-row">
-        <div class="col col-1" data-label="Job Id">{{ item.position }}</div>
-        <div class="col col-2" data-label="Customer Name">{{ item.netto }}</div>
-        <div class="col col-3" data-label="Amount">{{ item.vat }}</div>
-        <div class="col col-4" data-label="Payment Status">
-          {{ item.contractor }}
-        </div>
-        <button (click)="deletePayment(item)">delete</button>
-        <!-- <button routerLink="/detail/{{ item.Id }}">update</button> -->
-      </li>
-    </div>
-  </ul>
-</div>
-
-<!-- <nav>
-    <a routerLink="/create">create</a>
-    
-</nav>
-<div *ngFor="let item of payments">
-    <table>
-        <td>{{ item.netto }}</td>
-        <th>{{ item.vat }}</th>
-        <th>{{ item.netto }}</th>
-        <button (click)="deletePayment(item)"> delete</button>
-        <a routerLink="/detail">Details</a>
-    </table>
- 
-  <!-- <button (click)="updatePayment(item)"> Update</button>
-       -->
-<!-- </div> -->

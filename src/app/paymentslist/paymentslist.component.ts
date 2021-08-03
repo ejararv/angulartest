@@ -45,13 +45,13 @@ export class PaymentslistComponent implements OnInit {
   DATA_SET: any = [];
   data = this.payments;
 
-  displayedColumns = ['id', 'position', 'contractor', 'vat', 'netto'];
+  displayedColumns = ['date', 'position', 'contractor', 'vat', 'netto', 'edit', 'delete'];
   vat: number = 0;
   netto: number = 0;
   position: string = '';
   contractor: string = '';
   description: string = '';
-  expandedElement!: IPayments | null;
+  setClick: boolean = false
 
   dataSource = new MatTableDataSource<IPayments>(
     this.payments && DATA_SET_example
@@ -73,6 +73,10 @@ export class PaymentslistComponent implements OnInit {
     });
   }
 
+  editClick(){
+      this.setClick = !this.setClick
+  }
+
   ngOnInit() {
     this.getData();
     
@@ -92,15 +96,7 @@ export class PaymentslistComponent implements OnInit {
   }
 
   updatePayment(item: any) {
-    const payment: IPayments = {
-      date: Date.now(),
-      netto: this.netto,
-      vat: this.vat,
-      position: this.position,
-      contractor: this.contractor,
-      description: this.description,
-    };
-
+    
     this.storeService.updatePayment(item.id, {
       date: Date.now(),
       netto: this.netto,
