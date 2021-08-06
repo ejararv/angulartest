@@ -37,12 +37,9 @@ import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
-   
     SearchBarComponent,
     PaymentslistComponent,
     CreatePaymentComponent,
-   
-    
     InputFormComponent,
   ],
   imports: [
@@ -54,8 +51,6 @@ import { MatCardModule } from '@angular/material/card';
     BrowserAnimationsModule,
     MatTableModule,
     MatPaginatorModule,
-    Ng2SmartTableModule,
-
     MatSortModule,
     LayoutModule,
     MatToolbarModule,
@@ -71,7 +66,7 @@ import { MatCardModule } from '@angular/material/card';
     MatRadioModule,
     MatCardModule,
   ],
-  providers: [],
+  providers: [ PaymentslistComponent ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

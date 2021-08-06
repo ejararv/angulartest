@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-
+import {  PaymentslistComponent} from './../paymentslist/paymentslist.component'
 import { FirebaseService, IPayments } from '../srvices/firebase.service';
 
 @Component({
@@ -26,15 +26,26 @@ export class InputFormComponent {
   });
 
   vatOptions = [
-    { name: '23', option: 23 },
-    { name: '7', option: 7 },
+    { name: '23%', option: 23 },
+    { name: '7%', option: 7 },
   ];
 
-  constructor(private fb: FormBuilder, private storeService: FirebaseService) {}
+  constructor(private fb: FormBuilder, private storeService: FirebaseService, private plc: PaymentslistComponent) {}
 
-  
+  updateForm(){
+
+    if(this.plc.setClick == true){
+      
+
+    }
+
+  }
 
   onSubmit(): void {
+
+   
+
+    
     const payment: IPayments = this.paymentsForm.getRawValue();
     payment.date = Date.now()
     this.storeService.addPayment(payment);

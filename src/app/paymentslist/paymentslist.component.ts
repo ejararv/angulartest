@@ -40,6 +40,8 @@ const DATA_SET_example: IPayments[] = [
     ]),
   ],
 })
+
+
 export class PaymentslistComponent implements OnInit {
   payments: any = [];
   DATA_SET: any = [];
@@ -73,9 +75,7 @@ export class PaymentslistComponent implements OnInit {
     });
   }
 
-  editClick(){
-      this.setClick = !this.setClick
-  }
+  
 
   ngOnInit() {
     this.getData();

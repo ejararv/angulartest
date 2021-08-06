@@ -44,14 +44,14 @@
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef></th>
 
-      <td *matCellDef="let item" (click)="editClick()">
-        <mat-icon matSuffix>edit</mat-icon>
+      <td *matCellDef="let item" >
+        <mat-icon style="color: aliceblue;" matSuffix>edit</mat-icon>
       </td>
     </ng-container>
     <ng-container matColumnDef="delete">
       <th mat-header-cell *matHeaderCellDef></th>
       <td *matCellDef="let item" (click)="deletePayment(item)">
-        <mat-icon matSuffix>delete</mat-icon>
+        <mat-icon style="color:#c2185b" matSuffix>delete</mat-icon>
       </td>
     </ng-container>
 
